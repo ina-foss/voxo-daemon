@@ -1,0 +1,16 @@
+#set lm3=TED-newTalks-oodSel.152k.3g.kn-int.0-0-0.cmu.DMP32
+lm3=TED2-oodSel.152k.3g.kn-int.0-0-0.cmu.DMP32
+#set lm4=TED-newTalks-oodSel.152k.4g.kn-int.0-0-0-0.cmu.DMP32
+lm4=TED2-oodSel.152k.4g.kn-int.0-0-0-0.cmu.DMP32
+vocab=iwslt2011.152K.dic
+#set lw=11
+#set wip=0.1
+#set fillprob=0.1
+#set silprob=0.1
+poidspron=9.102
+
+### AFTER TUNING
+lw=11.497319551901205
+wip=0.04877327786831242556
+fillprob=0.22344105116479085917
+silprob=0.01303701181901810907

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+   Sphinx-4 Configuration file
+-->
+
+<config>
+ <property name="logLevel"     value="INFO"/>
+ <property name="fsmdir"     value="fsm"/>
+<property name="lm"     value="trigramModel"/>
+<property name="prune"     value="30"/>
+<property name="seuil"     value="1e-80"/>
+<property name="debut" value="0" />
+<property name="fin"   value="10000000" />
+<property name="latdir" value="latdir"/>
+
+<property name="seuilMot" value="0.01"/>
+   <!-- ******************************************************** -->
+    <!-- frequently tuned properties         0.06 9.5                     -->
+    <!-- ******************************************************** --> 
+
+    <property name="wip" value=".0127"/>
+    <property name="languageWeight" value="13.5"/>
+    <component name="confucius"
+          type="edu.cmu.sphinx.tools.batch.BatchConfucius">
+        <property name="skip" value="0"/>
+        <property name="beginSkip" value="${debut}"/>
+        <property name="count" value="${fin}"/>
+        <property name="latDir" value="${latdir}"/>
+        <property name="dictionary" value="dictionary" />
+        <property name="logMath" value="logMath"/>
+        <property name="saussice" value="charcutier" />
+	<property name="fsmDir" value="${fsmdir}"/>
+	<property name="limWord" value="0.00"/>
+	<property name="limEps" value="0.00"/>
+    </component>
+    <component  name="charcutier"
+         type="edu.cmu.sphinx.result.SausageMakerEdges">
+     <property name="dictionary" value="dictionary" />
+        <property name="logMath" value="logMath"/>
+        <property name="languageWeight" value="${languageWeight}"/>
+       <property name= "wordInsertionProbability" value="${wip}" />
+       <property name="prune" value="${prune}" />
+       <property name="seuilAbsolu" value="${seuil}" />
+       <property name="languageModel" value="${lm}"/>
+	<property name="scale" value="9"/>
+	<property name="seuilMot" value="${seuilMot}"/>
+     </component>
+
+
+<!-- create the configMonitor  -->
+    <component name="configMonitor"  
+          type="edu.cmu.sphinx.instrumentation.ConfigMonitor">
+        <property name="showConfig" value="true"/>
+        <property name="showConfigAsGDL" value="true"/>
+    </component>
+
+
+
+
+ <component name="logMath" type="edu.cmu.sphinx.util.LogMath">
+        <property name="logBase" value="1.0001"/>
+        <property name="useAddTable" value="true"/>
+    </component>
+
+ <component name="dictionary" 
+        type="edu.cmu.sphinx.linguist.dictionary.FullDictionary">
+        <property name="dictionaryPath"   value="file:dico/dic0105"/>
+        <property name="fillerPath"
+	       value="file:langue/dico/dico-noyau.filler"/>
+        <property name="addSilEndingPronunciation" value="false"/>
+        <property name="unitManager" value="unitManager"/>
+    </component>
+ <!-- roperty name="wordReplacement" value=" sil " -->
+ <!--  c est debile on ne peut pas lire sil entre crochet dans le xml -->
+  <!-- ******************************************************** -->
+    <!-- The unit manager configuration    name="queryLogFile" value="tracelm"                       -->
+    <!-- ******************************************************** -->
+
+    <component name="unitManager"
+        type="edu.cmu.sphinx.linguist.acoustic.UnitManager">
+     </component>
+
+ <component name="trigramModel" 
+        type="edu.cmu.sphinx.linguist.language.ngram.large.LargeTrigramModel">
+        <property name="location" 
+              value="3g_minus.DMP" />
+        <property name="logMath" value="logMath"/>
+        <property name="dictionary" value="dictionary"/>
+        <property name="maxDepth" value="3"/>
+        <property name="logLevel"     value="SEVERE"/>
+        <property name="unigramWeight" value=".7"/>
+
+    </component>
+
+     
+
+</config>

@@ -1,0 +1,16 @@
+[decode]
+pidfile = ./decode_daemon.pid
+logfile = /mnt/decode_daemon.log
+loglevel = info
+
+[align]
+pidfile = ./align_daemon.pid
+logfile = ./align_daemon.log
+loglevel = info
+output_dir = /mnt/output
+mwer_segmenter_bin = ./bin/mwerSegmenter
+
+process_list_url = http://192.168.1.18:8000/api/internal/processes?type={}
+download_url = http://192.168.1.18:8000/api/internal/download/{}?type={}
+upload_url = http://192.168.1.18:8000/api/internal/transcriptions/{}
+update_process_url = http://192.168.1.18:8000/api/internal/processes/
