@@ -4,4 +4,4 @@ SimpleDaemon==1.3.0
 lxml
 webrtcvad
 # -e git+ssh://git@bitbucket.org/vjousse/voxo-lib.git@master#egg=voxo_lib-master
--e git+git@github.com:allo-media/voxo-lib.git@master#egg=voxo_lib
+-e git+git@github.com:vjousse/voxo-lib.git@master#egg=voxo_lib
